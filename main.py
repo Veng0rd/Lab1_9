@@ -11,22 +11,16 @@ def parse():
 
     name_block = soup.find_all('td', class_='titleColumn')
     name = []
-    for item in name_block:
+    for item in name_block:  # заносим названия фильмов в массив
         name += [item.find('a').text]
 
-    rating = []
     rating_block = soup.find_all('td', class_='ratingColumn imdbRating')
-    for item in rating_block:
-        print(item.text.strip())
+    rating = []
+    for item in rating_block:  # заносим рейтинг в массив
+        rating += [item.text.strip()]
 
-
-    # try:
-    #     for item in block:
-    #         # dictionary[item.find_next('a').text] = item.find_next(class_='ratingColumn imdbRating').text.strip()
-    #         print(item.find_next() , '\n\n\n\n')
-    #
-    # except AttributeError:
-    #     pass
+    for i in range(250):  # заносим данные из массивов в словарь
+        dictionary[name[i]] = rating[i]
 
     print(dictionary)
 
